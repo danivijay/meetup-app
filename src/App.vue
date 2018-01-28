@@ -1,6 +1,23 @@
 <template>
   <v-app>
+    <v-navigation-drawer
+    temporary
+    v-model="drawer"
+    absolute
+    >
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>group</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            View Meetups
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar>
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>
         The Meetup App
       </v-toolbar-title>
@@ -22,8 +39,12 @@
 export default {
   data () {
     return {
-
+      drawer: false
     }
   }
 }
 </script>
+
+<style>
+  html { overflow-y: auto }
+</style>
