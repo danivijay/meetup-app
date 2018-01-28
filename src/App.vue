@@ -6,7 +6,7 @@
     absolute
     >
       <v-list>
-        <v-list-tile>
+        <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon>group</v-icon>
           </v-list-tile-action>
