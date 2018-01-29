@@ -16,32 +16,32 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: AppHome
     },
     {
       path: '/meetups',
-      name: 'meetups',
+      name: 'Meetups',
       component: MeetupHome
     },
     {
-      path: '/add',
-      name: 'add',
+      path: '/meetup/new',
+      name: 'MeetupAdd',
       component: MeetupAdd
     },
     {
       path: '/profile',
-      name: 'profile',
+      name: 'UserProfile',
       component: UserProfile
     },
     {
       path: '/login',
-      name: 'login',
+      name: 'UserLogin',
       component: UserLogin
     },
     {
       path: '/signup',
-      name: 'signup',
+      name: 'UserSignup',
       component: UserSignup
     }
   ]

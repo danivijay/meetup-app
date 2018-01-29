@@ -6,7 +6,11 @@
     absolute
     >
       <v-list>
-        <v-list-tile @click="" v-for="menuItem in menuItems" :key="menuItem.title">
+        <v-list-tile
+          v-for="menuItem in menuItems"
+          router
+          :to="menuItem.link"
+          :key="menuItem.title">
           <v-list-tile-action>
             <v-icon>{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
@@ -22,13 +26,16 @@
         class="hidden-sm-and-up"
         ></v-toolbar-side-icon>
       <v-toolbar-title>
-        The Meetup App
+        <router-link tag="span" to="/" style="cursor: pointer">The Meetup App</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items
         class="hidden-xs-only"
         >
-        <v-btn flat v-for="menuItem in menuItems" :key="menuItem.title">
+        <v-btn flat
+          v-for="menuItem in menuItems"
+          :to="menuItem.link"
+          :key="menuItem.title">
           <v-icon left>{{ menuItem.icon }}</v-icon>
           {{ menuItem.title }}
         </v-btn>
@@ -48,11 +55,11 @@ export default {
     return {
       drawer: false,
       menuItems: [
-        { icon: 'group', title: 'View Meetups' },
-        { icon: 'add_circle', title: 'Organize Meetup' },
-        { icon: 'account_circle', title: 'Profile' },
-        { icon: 'person_add', title: 'Sign up' },
-        { icon: 'lock_open', title: 'Login' }
+        { icon: 'group', title: 'View Meetups', link: '/meetups' },
+        { icon: 'add_circle', title: 'Organize Meetup', link: '/meetup/new' },
+        { icon: 'account_circle', title: 'Profile', link: '/profile' },
+        { icon: 'person_add', title: 'Sign up', link: '/signup' },
+        { icon: 'lock_open', title: 'Login', link: '/login' }
       ]
     }
   }
