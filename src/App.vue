@@ -42,9 +42,7 @@
       </v-toolbar-items>
     </v-toolbar>
 
-    <main>
-      <router-view></router-view>
-    </main>
+    <router-view></router-view>
 
   </v-app>
 </template>
