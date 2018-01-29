@@ -8,7 +8,6 @@
       <v-list>
         <v-list-tile
           v-for="menuItem in menuItems"
-          router
           :to="menuItem.link"
           :key="menuItem.title">
           <v-list-tile-action>

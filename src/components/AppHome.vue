@@ -22,7 +22,11 @@
     <v-layout class="mt-3">
       <v-flex xs12>
         <v-carousel>
-          <v-carousel-item v-for="item in carouselItems" v-bind:src="item.imageSrc" :key="item.id">
+          <v-carousel-item
+            v-for="item in carouselItems"
+            v-bind:src="item.imageSrc"
+            @click="navigateTo(item.id)"
+            :key="item.id">
             <div class="carousel-title">{{ item.title }}</div>
           </v-carousel-item>
         </v-carousel>
@@ -46,6 +50,11 @@ export default {
         { title: "Kochi Infopark", imageSrc: "http://images.financialexpress.com/2015/07/Kochi-info-park.jpg", id: "asdsadsa"},
         { title: "Trivandrum Technopark", imageSrc: "http://cms.technopark.org/zcmspg/zupload/media/web_media/5363/1447309670855_2.jpg", id: "dasweasd"}
       ]
+    }
+  },
+  methods: {
+    navigateTo (id) {
+      this.$router.push(`/meetups/${id}`)
     }
   }
 }

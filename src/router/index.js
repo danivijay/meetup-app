@@ -5,6 +5,7 @@ import AppHome from '@/components/AppHome.vue'
 
 import MeetupHome from '@/components/meetup/MeetupHome.vue'
 import MeetupAdd from '@/components/meetup/MeetupAdd.vue'
+import MeetupView from '@/components/meetup/MeetupView.vue'
 
 import UserProfile from '@/components/user/UserProfile.vue'
 import UserLogin from '@/components/user/UserLogin.vue'
@@ -28,6 +29,11 @@ export default new Router({
       path: '/meetup/new',
       name: 'MeetupAdd',
       component: MeetupAdd
+    },
+    {
+      path: '/meetups/:id',
+      name: 'MeetupView',
+      component: MeetupView
     },
     {
       path: '/profile',
