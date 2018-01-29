@@ -4,15 +4,14 @@
     temporary
     v-model="drawer"
     absolute
-    class="hidden-sm-and-up"
     >
       <v-list>
-        <v-list-tile @click="">
+        <v-list-tile @click="" v-for="menuItem in menuItems" :key="menuItem.title">
           <v-list-tile-action>
-            <v-icon>group</v-icon>
+            <v-icon>{{ menuItem.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            View Meetups
+            {{ menuItem.title }}
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -29,9 +28,9 @@
       <v-toolbar-items
         class="hidden-xs-only"
         >
-        <v-btn flat>
-          <v-icon left>group</v-icon>
-          View Meetups
+        <v-btn flat v-for="menuItem in menuItems" :key="menuItem.title">
+          <v-icon left>{{ menuItem.icon }}</v-icon>
+          {{ menuItem.title }}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -45,7 +44,14 @@
 export default {
   data () {
     return {
-      drawer: false
+      drawer: false,
+      menuItems: [
+        { icon: 'group', title: 'View Meetups' },
+        { icon: 'add_circle', title: 'Organize Meetup' },
+        { icon: 'account_circle', title: 'Profile' },
+        { icon: 'person_add', title: 'Sign up' },
+        { icon: 'lock_open', title: 'Login' }
+      ]
     }
   }
 }
