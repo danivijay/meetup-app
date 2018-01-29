@@ -22,14 +22,14 @@
     <v-toolbar dark class="primary">
       <v-toolbar-side-icon
         @click="drawer = !drawer"
-        class="hidden-sm-and-up"
+        class="hidden-md-and-up"
         ></v-toolbar-side-icon>
       <v-toolbar-title>
         <router-link tag="span" to="/" style="cursor: pointer">The Meetup App</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items
-        class="hidden-xs-only"
+        class="hidden-sm-and-down"
         >
         <v-btn flat
           v-for="menuItem in menuItems"

@@ -6,13 +6,13 @@
           <v-card-media
             class="white--text"
             height="300px"
-            src="http://images.financialexpress.com/2015/07/Kochi-info-park.jpg"
+            :src="meetup.imageSrc"
           >
           </v-card-media>
           <v-card-title>
             <div>
-              <h3>Kochi DigitalOcean</h3>
-              <span class="grey--text">Nov 10, 2018</span><br>
+              <h3>{{ meetup.title }}</h3>
+              <span class="grey--text">{{ meetup.date }}</span><br>
               <span>Infopark</span><br>
               <span>Kakkanad, Kochi</span>
             </div>
@@ -29,7 +29,13 @@
 
 <script>
 export default {
-
+  props: ['id'],
+  computed: {
+    meetup () {
+      console.log(this.id)
+      return this.$store.getters.loadedMeetup(this.id)
+    }
+  }
 }
 </script>
 

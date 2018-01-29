@@ -46,10 +46,11 @@
 export default {
   data () {
     return {
-      carouselItems: [
-        { title: "Kochi Infopark", imageSrc: "http://images.financialexpress.com/2015/07/Kochi-info-park.jpg", id: "asdsadsa"},
-        { title: "Trivandrum Technopark", imageSrc: "http://cms.technopark.org/zcmspg/zupload/media/web_media/5363/1447309670855_2.jpg", id: "dasweasd"}
-      ]
+    }
+  },
+  computed: {
+    carouselItems () {
+      return this.$store.getters.featuredMeetups
     }
   },
   methods: {
