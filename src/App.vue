@@ -5,10 +5,23 @@
     v-model="drawer"
     absolute
     >
+
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              {{ appname }}
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+      <v-divider></v-divider>
+
       <v-list>
         <v-list-tile
           v-for="menuItem in menuItems"
           :to="menuItem.link"
+          exact
           :key="menuItem.title">
           <v-list-tile-action>
             <v-icon>{{ menuItem.icon }}</v-icon>
@@ -25,7 +38,7 @@
         class="hidden-md-and-up"
         ></v-toolbar-side-icon>
       <v-toolbar-title>
-        <router-link tag="span" to="/" style="cursor: pointer">The Meetup App</router-link>
+        <router-link tag="span" to="/" style="cursor: pointer">{{ appname }}</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items
@@ -34,6 +47,7 @@
         <v-btn flat
           v-for="menuItem in menuItems"
           :to="menuItem.link"
+          exact
           :key="menuItem.title">
           <v-icon left>{{ menuItem.icon }}</v-icon>
           {{ menuItem.title }}
@@ -50,8 +64,10 @@
 export default {
   data () {
     return {
+      appname: 'The Meetup App',
       drawer: false,
       menuItems: [
+        { icon: 'home', title: 'Home', link: '/' },
         { icon: 'group', title: 'View Meetups', link: '/meetups' },
         { icon: 'add_circle', title: 'Organize Meetup', link: '/meetup/new' },
         { icon: 'account_circle', title: 'Profile', link: '/profile' },
