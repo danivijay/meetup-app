@@ -13,8 +13,8 @@
             <div>
               <h3>{{ meetup.title }}</h3>
               <span class="grey--text">{{ meetup.date }}</span><br>
-              <span>Infopark</span><br>
-              <span>Kakkanad, Kochi</span>
+              <span>{{ meetup.location }}</span><br>
+              <span>{{ meetup.description }}</span>
             </div>
           </v-card-title>
           <v-card-actions>
