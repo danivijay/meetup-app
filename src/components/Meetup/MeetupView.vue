@@ -12,7 +12,7 @@
           <v-card-title>
             <div>
               <h3>{{ meetup.title }}</h3>
-              <span class="grey--text">{{ meetup.date }}</span><br>
+              <span class="grey--text">{{ meetup.date | dateFilter }}</span><br>
               <span>{{ meetup.location }}</span><br>
               <span>{{ meetup.description }}</span>
             </div>

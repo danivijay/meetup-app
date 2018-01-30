@@ -10,17 +10,17 @@ export const store = new Vuex.Store({
         title: 'DigitalOcean Kochi',
         imageSrc: 'http://images.financialexpress.com/2015/07/Kochi-info-park.jpg',
         id: 'asdsadsa',
-        date: '2018-01-17',
-        location: 'KOchi meetup',
-        description: ''
+        date: new Date(),
+        location: 'Kochi',
+        description: 'Official DigitalOcean Kochi Meetup'
       },
       {
         title: 'Barcamp Kerala',
         imageSrc: 'http://cms.technopark.org/zcmspg/zupload/media/web_media/5363/1447309670855_2.jpg',
         id: 'dasweasd',
-        date: '2018-01-19',
-        location: '',
-        description: 'Tvm Meetup'
+        date: new Date(),
+        location: 'Kerala',
+        description: 'Barcamp kerala meetup group'
       }
     ],
     user: {

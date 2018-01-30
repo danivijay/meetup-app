@@ -4,6 +4,7 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import { store } from './store'
+import dateFilter from './filters/dateFilter'
 
 Vue.use(Vuetify, {
   theme: {
@@ -13,6 +14,8 @@ Vue.use(Vuetify, {
     error: '#b71c1c'
   }
 })
+
+Vue.filter('dateFilter', dateFilter)
 
 Vue.config.productionTip = false
 
