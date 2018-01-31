@@ -16,12 +16,19 @@
             :rules="locationRules"
             required
           ></v-text-field>
-          <v-text-field
-            label="Image URL"
-            v-model="meetupInfo.imageSrc"
-            :rules="imageRules"
-            required
-          ></v-text-field>
+
+          <v-btn
+            @click="onPickFile"
+            class="primary">
+            Upload image
+          </v-btn>
+          <input
+            type="file"
+            style="display: none;"
+            ref="fileInput"
+            accept="image/*"
+            @change="onFilePicked">
+
           <img :src="meetupInfo.imageSrc" style="width: 100%">
           <v-text-field
             label="Description"
@@ -84,7 +91,9 @@
               ></v-time-picker>
           </v-menu>
 
-          <v-btn @click="createMeetup" :disabled="!valid">
+          <v-btn
+          @click="createMeetup"
+          class="primary">
             Submit
           </v-btn>
         </v-form>
@@ -120,7 +129,8 @@ export default {
         title: '',
         location: '',
         imageSrc: '',
-        description: ''
+        description: '',
+        image: null
       },
       date: '',
       time: ''
@@ -138,14 +148,29 @@ export default {
   },
   methods: {
     createMeetup () {
-      console.log(this.datetime)
-      if (this.$refs.form.validate() && this.datetime) {
+      if (this.$refs.form.validate() && this.datetime && this.meetupInfo.image) {
         this.meetupInfo.date = this.datetime
         this.$store.dispatch('createMeetup', this.meetupInfo)
         this.$router.push('/meetups')
       } else {
         console.log('Invalid form content')
       }
+    },
+    onPickFile () {
+      this.$refs.fileInput.click()
+    },
+    onFilePicked (event) {
+      const files = event.target.files
+      let filename = files[0].name
+      if (filename.lastIndexOf('.') <= 0) {
+        return alert('Please select a valid file')
+      }
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        this.meetupInfo.imageSrc = fileReader.result
+      })
+      fileReader.readAsDataURL(files[0])
+      this.meetupInfo.image = files[0]
     }
   }
 }
