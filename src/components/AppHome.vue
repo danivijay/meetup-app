@@ -20,9 +20,15 @@
     </v-layout>
 
     <v-layout class="mt-3">
-      <v-flex xs12>
-        <v-carousel>
-          <v-carousel-item
+      <v-flex xs12 class="text-xs-center">
+        <v-progress-circular
+          v-if="loading"
+          indeterminate
+          v-bind:size="70"
+          v-bind:width="5"
+          color="primary"></v-progress-circular>
+        <v-carousel v-else>
+          <v-carousel-item style="cursor: pointer"
             v-for="item in carouselItems"
             v-bind:src="item.imageSrc"
             @click="navigateTo(item.id)"
@@ -51,6 +57,9 @@ export default {
   computed: {
     carouselItems () {
       return this.$store.getters.featuredMeetups
+    },
+    loading () {
+      return this.$store.getters.loading
     }
   },
   methods: {
