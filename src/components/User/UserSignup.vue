@@ -28,7 +28,7 @@
             ></v-text-field>
 
             <v-btn
-              @click="submit"
+              @click="onSignup"
               :disabled="!valid"
             >
               Register
@@ -63,11 +63,21 @@ export default {
   computed: {
     confirmPasswordRules () {
       return (this.password !== this.confirmPassword ? 'Passwords not matching' : true)
+    },
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  watch: {
+    user (value) {
+      if (value !== null && value !== 'undefined') {
+        this.$router.push('/')
+      }
     }
   },
   methods: {
-    submit () {
-      console.log('blahblah')
+    onSignup () {
+      this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
     }
   }
 }

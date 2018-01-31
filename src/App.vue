@@ -65,15 +65,28 @@ export default {
   data () {
     return {
       appname: 'The Meetup App',
-      drawer: false,
-      menuItems: [
-        { icon: 'home', title: 'Home', link: '/' },
-        { icon: 'group', title: 'View Meetups', link: '/meetups' },
-        { icon: 'add_circle', title: 'Organize Meetup', link: '/meetup/new' },
-        { icon: 'account_circle', title: 'Profile', link: '/profile' },
-        { icon: 'person_add', title: 'Sign up', link: '/signup' },
-        { icon: 'lock_open', title: 'Login', link: '/login' }
+      drawer: false
+    }
+  },
+  computed: {
+    menuItems () {
+      let menuItems = [
+          { icon: 'home', title: 'Home', link: '/' },
+          { icon: 'person_add', title: 'Sign up', link: '/signup' },
+          { icon: 'lock_open', title: 'Login', link: '/login' }
       ]
+      if (this.userIsAuthenticated) {
+        menuItems = [
+          { icon: 'home', title: 'Home', link: '/' },
+          { icon: 'group', title: 'View Meetups', link: '/meetups' },
+          { icon: 'add_circle', title: 'Organize Meetup', link: '/meetup/new' },
+          { icon: 'account_circle', title: 'Profile', link: '/profile' }
+        ]
+      }
+      return menuItems
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   }
 }
