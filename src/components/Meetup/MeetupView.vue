@@ -44,7 +44,9 @@
               <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog>
             </template>
 
-            <app-meetup-register-dialog :meetupId="meetup.id"></app-meetup-register-dialog>
+            <app-meetup-register-dialog
+              v-if="userIsAuthenticated && !userIsCreator"
+              :meetupId="meetup.id"></app-meetup-register-dialog>
 
           </v-card-actions>
         </v-card>
