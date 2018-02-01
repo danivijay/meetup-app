@@ -9,6 +9,7 @@ import * as firebase from 'firebase'
 import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
 import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
 import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
+import MeetupRegisterDialog from './components/Meetup/Register/MeetupRegisterDialog'
 
 Vue.use(Vuetify, {
   theme: {
@@ -23,6 +24,7 @@ Vue.filter('dateFilter', dateFilter)
 Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog)
 Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
 Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog)
+Vue.component('app-meetup-register-dialog', MeetupRegisterDialog)
 
 Vue.config.productionTip = false
 

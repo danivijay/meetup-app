@@ -44,10 +44,8 @@
               <app-edit-meetup-details-dialog :meetup="meetup"></app-edit-meetup-details-dialog>
             </template>
 
-            <v-btn class="secondary">
-              <v-icon left>add</v-icon>
-              Register
-            </v-btn>
+            <app-meetup-register-dialog :meetupId="meetup.id"></app-meetup-register-dialog>
+
           </v-card-actions>
         </v-card>
       </v-flex>
