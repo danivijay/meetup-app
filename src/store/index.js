@@ -231,6 +231,13 @@ export const store = new Vuex.Store({
         fbKeys: {}
       })
     },
+    fetchUserData ({commit, getters}) {
+      commit('setLoading', true)
+      firebase.database().ref('/users/' + getters.user.id + '/registrations/').once('value')
+        .then(data => {
+
+        })
+    },
     logout ({commit}) {
       firebase.auth().signOut()
       commit('setUser', null)
