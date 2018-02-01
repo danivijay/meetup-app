@@ -6,6 +6,8 @@ import 'vuetify/dist/vuetify.min.css'
 import { store } from './store'
 import dateFilter from './filters/dateFilter'
 import * as firebase from 'firebase'
+import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
+import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
 
 Vue.use(Vuetify, {
   theme: {
@@ -17,6 +19,8 @@ Vue.use(Vuetify, {
 })
 
 Vue.filter('dateFilter', dateFilter)
+Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog)
+Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
 
 Vue.config.productionTip = false
 
