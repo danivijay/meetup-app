@@ -2,20 +2,20 @@
   <v-dialog v-model="dialog" max-width="320px" persistent>
     <v-btn flat slot="activator">
       <v-icon left>mode_edit</v-icon>
-      Date
+      Time
     </v-btn>
     <v-card>
       <v-card-title>
-        Edit Date
+        Edit Time
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
-        <v-date-picker v-model="editableDate" style="width: 100%;" actions>
+        <v-time-picker v-model="editableTime" style="width: 100%;" actions format="24hr">
           <template slot-scope="{save, cancel}">
             <v-btn color="primary" flat @click.stop="dialog=false">Close</v-btn>
             <v-btn color="primary" flat @click.stop="onSaveChanges">Save</v-btn>
           </template>
-        </v-date-picker>
+        </v-time-picker>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -27,18 +27,16 @@ export default {
   data () {
     return {
       dialog: false,
-      editableDate: null
+      editableTime: null
     }
   },
   methods: {
     onSaveChanges () {
       const newDate = new Date(this.meetup.date)
-      const newDay = new Date(this.editableDate).getUTCDate()
-      const newMonth = new Date(this.editableDate).getUTCMonth()
-      const newYear = new Date(this.editableDate).getUTCFullYear()
-      newDate.setUTCDate(newDay)
-      newDate.setUTCMonth(newMonth)
-      newDate.setUTCFullYear(newYear)
+      const hours = this.editableTime.match(/^(\d+)/)[1]
+      const minutes = this.editableTime.match(/:(\d+)/)[1]
+      newDate.setHours(hours)
+      newDate.setMinutes(minutes)
       this.$store.dispatch('updateMeetupData', {
         id: this.meetup.id,
         date: newDate
@@ -46,11 +44,7 @@ export default {
     }
   },
   created () {
-    let date = new Date(this.meetup.date)
-    let day = date.getUTCDate()
-    let month = date.getUTCMonth() + 1
-    let year = date.getUTCFullYear()
-    this.editableDate = year + '-' + month + '-' + day
+    this.editableTime = new Date(this.meetup.date).toTimeString()
   }
 }
 </script>

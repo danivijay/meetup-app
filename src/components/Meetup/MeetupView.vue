@@ -25,13 +25,14 @@
           <v-card-title>
             <div>
               <h3>{{ meetup.title }}</h3>
-              <span class="grey--text">{{ meetup.date | dateFilter }}</span>
+              <span class="grey--text">{{ meetup.date | dateFilter }}</span><br>
 
               <template v-if="userIsCreator">
                 <app-edit-meetup-date-dialog :meetup="meetup"></app-edit-meetup-date-dialog>
+                <app-edit-meetup-time-dialog :meetup="meetup"></app-edit-meetup-time-dialog>
               </template>
-
               <br>
+
               <span>{{ meetup.location }}</span><br>
               <span>{{ meetup.description }}</span>
             </div>
