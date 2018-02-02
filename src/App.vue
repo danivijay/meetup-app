@@ -95,8 +95,7 @@ export default {
         menuItems = [
           { icon: 'home', title: 'Home', link: '/' },
           { icon: 'group', title: 'View Meetups', link: '/meetups' },
-          { icon: 'add_circle', title: 'Organize Meetup', link: '/meetup/new' },
-          { icon: 'account_circle', title: 'Profile', link: '/profile' }
+          { icon: 'add_circle', title: 'Organize Meetup', link: '/meetup/new' }
         ]
       }
       return menuItems
